@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     Animator animator;
 
+    [SerializeField] private int health;
+    [SerializeField] Transform respawnPt;
+
 
     bool isGrounded = false;
 
@@ -35,6 +38,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        //respawn player if they "die"
+        if (health <= 0)
+        {
+            transform.position = respawnPt.transform.position;
+            health = 1;
+        }
+
         if (Input.GetButtonUp("Crouch") || Input.GetButtonUp("Shift"))
         {
             speed = walkSpeed;
