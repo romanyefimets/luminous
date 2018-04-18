@@ -7,7 +7,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    public float speed = 10, jumpVelocity = 10;
+    public float walkSpeed, runSpeed, crouchSpeed, jumpVelocity;
+
+    float speed;
     public LayerMask playerMask;
     Transform myTrans, tagGround;
 
@@ -18,41 +20,61 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     Animator animator;
 
+
     bool isGrounded = false;
+
 
     void Start()
     {
         myBody = GetComponent<Rigidbody2D>();
         myTrans = this.transform;
         tagGround = GameObject.Find(this.name + "/tag_ground").transform;
+        speed = walkSpeed;
+
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        if (Input.GetButtonDown("Shift") && isGrounded)
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            speed = 20;
+            speed = runSpeed;
         }
-        if (Input.GetButtonUp("Shift"))
+        else if (Input.GetKey(KeyCode.LeftControl))
         {
-            speed = 10;
+            speed = crouchSpeed;
         }
+        else
+        {
+            speed = walkSpeed;
+        }
+    
 
         animator.SetFloat("speed", myBody.velocity.magnitude);
 
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
 
-        if (moveHorizontal < 0)
-            gameObject.GetComponent<SpriteRenderer>().flipX = true;
-        else
-            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+
+        flipCharacter();
+
+      
 
 
         isGrounded = Physics2D.Linecast(myTrans.position, tagGround.position, playerMask);
         Move(Input.GetAxisRaw("Horizontal"));
         if (Input.GetButtonDown("Jump"))
             Jump();
+    }
+
+    public void flipCharacter()
+    {
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        if (moveHorizontal < 0)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        }
     }
 
     public void Move(float horizontalInput)
