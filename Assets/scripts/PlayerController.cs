@@ -35,19 +35,19 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            speed = runSpeed;
-        }
-        else if (Input.GetKey(KeyCode.LeftControl))
-        {
-            speed = crouchSpeed;
-        }
-        else
+        if (Input.GetButtonUp("Crouch") || Input.GetButtonUp("Shift"))
         {
             speed = walkSpeed;
         }
-    
+        if (Input.GetButtonDown("Shift") && isGrounded)
+        {
+            speed = runSpeed;
+        }
+        if (Input.GetButtonDown("Crouch"))
+        {
+            speed = crouchSpeed;
+        }
+
 
         animator.SetFloat("speed", myBody.velocity.magnitude);
 
