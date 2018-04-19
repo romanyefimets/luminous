@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 
@@ -23,8 +24,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int health;
     [SerializeField] Transform respawnPt;
 
+    public GameObject teleportUI;
+
 
     bool isGrounded = false;
+    float timeDown = 0;
 
 
     void Start()
@@ -58,7 +62,6 @@ public class PlayerController : MonoBehaviour
             speed = crouchSpeed;
         }
 
-
         animator.SetFloat("speed", myBody.velocity.magnitude);
 
 
@@ -72,6 +75,26 @@ public class PlayerController : MonoBehaviour
         Move(Input.GetAxisRaw("Horizontal"));
         if (Input.GetButtonDown("Jump"))
             Jump();
+        if (Input.GetMouseButton(0))
+        {
+            if (teleportUI.activeInHierarchy == false)
+                teleportUI.SetActive(true);
+
+            timeDown += Time.deltaTime;
+            teleportUI.GetComponent<Text>().text = string.Format("Teleport in: {0:0.00}", 2 - timeDown);
+
+            if (timeDown >= 2)
+            {
+                Teleport();
+                timeDown = 0;
+                teleportUI.SetActive(false);
+            }
+        }
+        else if (teleportUI.activeInHierarchy == true)
+        {
+            teleportUI.SetActive(false);
+            timeDown = 0;
+        }
     }
 
     public void flipCharacter()
@@ -99,5 +122,11 @@ public class PlayerController : MonoBehaviour
     {
         if (isGrounded)
             myBody.velocity += jumpVelocity * Vector2.up;
+    }
+
+    public void Teleport()
+    {
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        myBody.MovePosition(new Vector2(mousePos.x, mousePos.y));
     }
 }
