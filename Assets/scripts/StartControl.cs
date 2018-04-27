@@ -10,4 +10,10 @@ public class StartControl : MonoBehaviour {
     {
         SceneManager.LoadScene("main");
     }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+            SceneManager.LoadScene("main");
+    }
 }
