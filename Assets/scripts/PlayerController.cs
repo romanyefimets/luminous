@@ -30,6 +30,12 @@ public class PlayerController : MonoBehaviour
     bool isGrounded = false;
     float timeDown = 0;
 
+    private float colliderH;
+    private float colliderW;
+
+    private float colliderOffX;
+    private float colliderOffY;
+
 
     void Start()
     {
@@ -37,6 +43,15 @@ public class PlayerController : MonoBehaviour
         myTrans = this.transform;
         tagGround = GameObject.Find(this.name + "/tag_ground").transform;
         speed = walkSpeed;
+
+        colliderH = GetComponent<BoxCollider2D>().size.y;
+        colliderW = GetComponent<BoxCollider2D>().size.x;
+
+        colliderOffX =  GetComponent<BoxCollider2D>().offset.x;
+        colliderOffY = GetComponent<BoxCollider2D>().offset.y;
+
+
+
 
     }
 
@@ -52,15 +67,28 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonUp("Crouch") || Input.GetButtonUp("Shift"))
         {
             speed = walkSpeed;
+            GetComponent<BoxCollider2D>().size = new Vector2(colliderW, colliderH);
+            GetComponent<BoxCollider2D>().offset = new Vector2(colliderOffX, colliderOffY);
+
+
         }
         if (Input.GetButtonDown("Shift") && isGrounded)
         {
             speed = runSpeed;
+            GetComponent<BoxCollider2D>().size = new Vector2(colliderW, colliderH);
+            GetComponent<BoxCollider2D>().offset = new Vector2(colliderOffX, colliderOffY);
+
+
+
         }
         if (Input.GetButtonDown("Crouch"))
         {
+            GetComponent<BoxCollider2D>().size = new Vector2(colliderW, colliderH / 2);
+            GetComponent<BoxCollider2D>().offset = new Vector2(colliderOffX,  - colliderH / 4);
             speed = crouchSpeed;
         }
+
+
 
         animator.SetFloat("speed", myBody.velocity.magnitude);
 
