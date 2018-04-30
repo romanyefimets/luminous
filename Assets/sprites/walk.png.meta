@@ -8,6 +8,9 @@ TextureImporter:
     21300002: walk_1
     21300004: walk_3
     21300006: walk_4
+    21300008: walk_0
+    21300010: walk_5
+    21300012: walk_6
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -49,8 +52,9 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 9
   spritePivot: {x: 0.50089127, y: 0.49799868}
-  spriteBorder: {x: 2, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 2, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: 0
@@ -107,12 +111,12 @@ TextureImporter:
       name: walk_2
       rect:
         serializedVersion: 2
-        x: 501
-        y: 95
-        width: 233
-        height: 437
+        x: 34
+        y: 726
+        width: 370
+        height: 646
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -121,12 +125,12 @@ TextureImporter:
       name: walk_1
       rect:
         serializedVersion: 2
-        x: 201
-        y: 135
-        width: 208
-        height: 389
+        x: 668
+        y: 1384
+        width: 324
+        height: 638
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -135,12 +139,12 @@ TextureImporter:
       name: walk_3
       rect:
         serializedVersion: 2
-        x: 846
-        y: 134
-        width: 157
-        height: 390
+        x: 615
+        y: 726
+        width: 316
+        height: 653
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -149,13 +153,55 @@ TextureImporter:
       name: walk_4
       rect:
         serializedVersion: 2
-        x: 1158
-        y: 134
-        width: 203
-        height: 388
+        x: 89
+        y: 44
+        width: 329
+        height: 653
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: walk_0
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1386
+        width: 359
+        height: 650
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: walk_5
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 62
+        width: 405
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: walk_6
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 69
+        width: 373
+        height: 671
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0

@@ -6,6 +6,8 @@ TextureImporter:
   fileIDToRecycleName:
     21300000: idle_0
     21300002: idle_1
+    21300004: idle_2
+    21300006: idle_3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -47,8 +49,9 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -105,12 +108,12 @@ TextureImporter:
       name: idle_0
       rect:
         serializedVersion: 2
-        x: 206
-        y: 27
-        width: 170
-        height: 370
+        x: 145
+        y: 1322
+        width: 223
+        height: 653
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -119,10 +122,38 @@ TextureImporter:
       name: idle_1
       rect:
         serializedVersion: 2
-        x: 545
-        y: 30
-        width: 169
-        height: 367
+        x: 669
+        y: 1325
+        width: 334
+        height: 657
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: idle_2
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 590
+        width: 352
+        height: 689
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: idle_3
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 608
+        width: 305
+        height: 646
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
