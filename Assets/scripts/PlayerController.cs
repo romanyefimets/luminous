@@ -64,16 +64,18 @@ public class PlayerController : MonoBehaviour
             health = 1;
         }
 
-        if (Input.GetButtonUp("Crouch") || Input.GetButtonUp("Shift"))
+        
+        if (Input.GetButtonUp("Crouch") || Input.GetButtonUp("Sprint"))
         {
             speed = walkSpeed;
             GetComponent<BoxCollider2D>().size = new Vector2(colliderW, colliderH);
-            GetComponent<BoxCollider2D>().offset = new Vector2(colliderOffX, colliderOffY);
+           GetComponent<BoxCollider2D>().offset = new Vector2(colliderOffX, colliderOffY);
 
 
         }
-        if (Input.GetButtonDown("Shift") && isGrounded)
+        else if (Input.GetButton("Sprint") && isGrounded)
         {
+            print("sprint");
             speed = runSpeed;
             GetComponent<BoxCollider2D>().size = new Vector2(colliderW, colliderH);
             GetComponent<BoxCollider2D>().offset = new Vector2(colliderOffX, colliderOffY);
@@ -81,12 +83,13 @@ public class PlayerController : MonoBehaviour
 
 
         }
-        if (Input.GetButtonDown("Crouch"))
+        else if (Input.GetButton("Crouch"))
         {
-            GetComponent<BoxCollider2D>().size = new Vector2(colliderW, colliderH / 2);
+             GetComponent<BoxCollider2D>().size = new Vector2(colliderW, colliderH / 2);
             GetComponent<BoxCollider2D>().offset = new Vector2(colliderOffX,  - colliderH / 4);
             speed = crouchSpeed;
         }
+
 
 
 
@@ -96,10 +99,11 @@ public class PlayerController : MonoBehaviour
 
         flipCharacter();
 
-      
 
 
-        isGrounded = Physics2D.Linecast(myTrans.position, tagGround.position, playerMask);
+
+        //isGrounded = Physics2D.Linecast(myTrans.position, tagGround.position, playerMask);
+        isGrounded = true;
         Move(Input.GetAxisRaw("Horizontal"));
         if (Input.GetButtonDown("Jump"))
             Jump();
