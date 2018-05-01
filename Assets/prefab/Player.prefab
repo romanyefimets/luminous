@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114807115439553606}
   - component: {fileID: 114614831118337824}
   - component: {fileID: 114432281239047142}
+  - component: {fileID: 114454696214048934}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -430,6 +431,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
+  timeDisplay: {fileID: 0}
+  startingBattery: 120
   light: {fileID: 108044140311433804}
 --- !u!114 &114432281239047142
 MonoBehaviour:
@@ -442,6 +445,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac1e5906aff1ccb41825d5851b02c384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114454696214048934
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1152797470568180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d14285b047f4f7e43832aee1c94481a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+  teleportUI: {fileID: 0}
+  startTime: 0
 --- !u!114 &114510628431730024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -493,7 +510,6 @@ MonoBehaviour:
   animator: {fileID: 95566146818849400}
   health: 1
   respawnPt: {fileID: 0}
-  teleportUI: {fileID: 0}
   invControl: 0
   startTime: 0
 --- !u!212 &212596485969281192
