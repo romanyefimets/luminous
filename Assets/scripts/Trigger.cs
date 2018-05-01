@@ -20,7 +20,10 @@ public class Trigger : MonoBehaviour {
         if (other.tag == "Player")
         {
             if (Input.GetButtonDown("Action"))
+            {
+                GetComponent<SpriteRenderer>().flipX = !GetComponent<SpriteRenderer>().flipX;
                 listener.GetComponent<triggerListener>().triggerAction();
+            }
         }
     }
 }
