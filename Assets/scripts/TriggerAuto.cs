@@ -22,7 +22,8 @@ public class TriggerAuto : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-           listener.GetComponent<triggerListener>().triggerAction();
+           if (listener != null)
+            listener.GetComponent<triggerListener>().triggerAction();
         }
     }
 }
