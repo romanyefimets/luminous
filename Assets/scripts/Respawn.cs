@@ -13,6 +13,7 @@ public class Respawn : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+		if(other.tag == "Player")
         player.transform.position = respawnpt.transform.position;
     }
 }

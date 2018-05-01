@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
 
 
     bool isGrounded = false;
+	public bool invControl = false;
+	public float startTime;
     float timeDown = 0;
 
     private float colliderH;
@@ -39,6 +41,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+		startTime = 0;
         myBody = GetComponent<Rigidbody2D>();
         myTrans = this.transform;
         tagGround = GameObject.Find(this.name + "/tag_ground").transform;
@@ -57,6 +60,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+		if (Time.time - startTime > 10f) {
+			invControl = false;
+		}
         //respawn player if they "die"
         if (health <= 0)
         {
@@ -102,8 +108,8 @@ public class PlayerController : MonoBehaviour
 
 
 
-        //isGrounded = Physics2D.Linecast(myTrans.position, tagGround.position, playerMask);
-        isGrounded = true;
+        isGrounded = Physics2D.Linecast(myTrans.position, tagGround.position, playerMask);
+        //isGrounded = true;
         Move(Input.GetAxisRaw("Horizontal"));
         if (Input.GetButtonDown("Jump"))
             Jump();
@@ -144,10 +150,16 @@ public class PlayerController : MonoBehaviour
 
     public void Move(float horizontalInput)
     {
-        //Input.GetKey(KeyCode.LeftShift);
-        Vector2 moveVel = myBody.velocity;
-        moveVel.x = horizontalInput * speed;
-        myBody.velocity = moveVel;
+		if (invControl == false) {
+			//Input.GetKey(KeyCode.LeftShift);
+			Vector2 moveVel = myBody.velocity;
+			moveVel.x = horizontalInput * speed;
+			myBody.velocity = moveVel;
+		} else {
+			Vector2 moveVel = myBody.velocity;
+			moveVel.x = (-1) * horizontalInput * speed;
+			myBody.velocity = moveVel;
+		}
     }
 
     public void Jump()
