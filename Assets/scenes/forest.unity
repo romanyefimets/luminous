@@ -1256,6 +1256,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114225701922498244, guid: 9677378f41c72174a86f5aa02fefcbf1,
+        type: 2}
+      propertyPath: nextScene
+      value: forest
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9677378f41c72174a86f5aa02fefcbf1, type: 2}
   m_IsPrefabParent: 0
@@ -2057,7 +2062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a39ebe83f954054a92f1e675de4ffa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Level 1
+  nextScene: main
 --- !u!61 &821963428
 BoxCollider2D:
   m_ObjectHideFlags: 0
