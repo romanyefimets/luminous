@@ -27,7 +27,8 @@ GameObject:
   - component: {fileID: 114614831118337824}
   - component: {fileID: 114432281239047142}
   - component: {fileID: 114454696214048934}
-  m_Layer: 8
+  - component: {fileID: 61848805041381454}
+  m_Layer: 2
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -42,7 +43,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4852380011122894}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: rightWalk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +59,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4995844791921928}
   - component: {fileID: 212645345394961490}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: flashLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +75,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4903775020498088}
   - component: {fileID: 108840505836924130}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4482561801608026}
   - component: {fileID: 114510628431730024}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: armPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +108,7 @@ GameObject:
   - component: {fileID: 4809319022505680}
   - component: {fileID: 212713041105310104}
   - component: {fileID: 114077270176567134}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4921025494893994}
   - component: {fileID: 108044140311433804}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: Spotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +139,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4140388046889714}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: leftWalk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,7 +154,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4601420954991890}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: tag_ground
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -305,6 +306,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &61848805041381454
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1152797470568180}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.3, y: -3.22}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.63, y: 6.47}
+    newSize: {x: 3.63, y: 6.47}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.11, y: 4.72}
+  m_EdgeRadius: 0
 --- !u!61 &61897309861885264
 BoxCollider2D:
   m_ObjectHideFlags: 1

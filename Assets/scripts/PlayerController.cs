@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
 		startTime = 0;
         myBody = GetComponent<Rigidbody2D>();
         myTrans = this.transform;
-        tagGround = GameObject.Find(this.name + "/tag_ground").transform;
+        //tagGround = GameObject.Find(this.name + "/tag_ground").transform;
         speed = walkSpeed;
 
         colliderH = GetComponent<BoxCollider2D>().size.y;
@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-        isGrounded = Physics2D.Linecast(myTrans.position, tagGround.position, playerMask);
+        //isGrounded = Physics2D.Linecast(myTrans.position, tagGround.position, playerMask);
         //isGrounded = true;
         Move(Input.GetAxisRaw("Horizontal"));
         if (Input.GetButtonDown("Jump"))
@@ -149,5 +149,15 @@ public class PlayerController : MonoBehaviour
         if (isGrounded)
             myBody.velocity += jumpVelocity * Vector2.up;
     }
+
+	private void OnTriggerStay2D(Collider2D other){
+		if(other.tag != "Player")
+			isGrounded = true;
+	}
+
+	private void OnTriggerExit2D(Collider2D other){
+		if(other.tag != "Player")
+			isGrounded = false;
+	}
 
 }
