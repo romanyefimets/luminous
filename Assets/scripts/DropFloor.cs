@@ -19,6 +19,7 @@ public class DropFloor : MonoBehaviour{
 	{
 		if (other.tag == "Player") {
 			GetComponent<BoxCollider2D> ().enabled = false;
+			Destroy (gameObject);
 			GetComponent<SpriteRenderer> ().enabled = false;
 		}
 	}
