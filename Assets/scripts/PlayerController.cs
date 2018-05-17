@@ -7,6 +7,14 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+
+    private GameObject[] resets;
+    public float MaxHp = 10;
+    [SerializeField]
+    public float healthReg;
+    bool isRegenHealth;
+    public float timestamp = 0.0f;//used for damage
+
     [SerializeField]
     public float walkSpeed, runSpeed, crouchSpeed, jumpVelocity;
 
@@ -14,7 +22,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask playerMask;
     Transform myTrans, tagGround;
 
-
+    private bool isCrouch = false;
 
     [SerializeField]
     Rigidbody2D myBody;
@@ -22,7 +30,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     Animator animator;
 
-    [SerializeField] private int health;
+    [SerializeField] private float health;
     [SerializeField] Transform respawnPt;
 
 
@@ -38,9 +46,11 @@ public class PlayerController : MonoBehaviour
     private float colliderOffX;
     private float colliderOffY;
 
+    public bool isCrouching() { return isCrouch; }
 
     void Start()
     {
+        resets = GameObject.FindGameObjectsWithTag("reset");
 		startTime = 0;
         myBody = GetComponent<Rigidbody2D>();
         myTrans = this.transform;
@@ -60,46 +70,56 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-		if (Time.time - startTime > 10f) {
+        if (health != MaxHp && !isRegenHealth)
+        {
+            if (Time.time > (timestamp + 10.0f)) //change the float to control hp regen delay timer after taking damage
+                StartCoroutine(RegainHp());
+        }
+        if (Time.time - startTime > 10f) {
 			invControl = false;
 		}
         //respawn player if they "die"
         if (health <= 0)
         {
-            transform.position = respawnPt.transform.position;
-            health = 1;
+            respawn();
         }
 
         
-        if (Input.GetButtonUp("Crouch") || Input.GetButtonUp("Sprint"))
+        if (Input.GetButtonUp("Sprint") || Input.GetButtonUp("Crouch"))
         {
             speed = walkSpeed;
             GetComponent<BoxCollider2D>().size = new Vector2(colliderW, colliderH);
-           GetComponent<BoxCollider2D>().offset = new Vector2(colliderOffX, colliderOffY);
-
+            GetComponent<BoxCollider2D>().offset = new Vector2(colliderOffX, colliderOffY);
+            isCrouch = false;
 
         }
         else if (Input.GetButton("Sprint") && isGrounded)
         {
-            print("sprint");
             speed = runSpeed;
             GetComponent<BoxCollider2D>().size = new Vector2(colliderW, colliderH);
             GetComponent<BoxCollider2D>().offset = new Vector2(colliderOffX, colliderOffY);
-
+            isCrouch = false;
 
 
         }
         else if (Input.GetButton("Crouch"))
         {
-             GetComponent<BoxCollider2D>().size = new Vector2(colliderW, colliderH / 2);
+            GetComponent<BoxCollider2D>().size = new Vector2(colliderW, colliderH / 2);
             GetComponent<BoxCollider2D>().offset = new Vector2(colliderOffX,  - colliderH / 4);
             speed = crouchSpeed;
+            if (myBody.velocity.magnitude > 0)
+                isCrouch = false;
+            else
+                isCrouch = true;
+
         }
 
 
 
 
+
         animator.SetFloat("speed", myBody.velocity.magnitude);
+        animator.SetBool("crouchIdle", isCrouch);
 
 
 
@@ -159,5 +179,37 @@ public class PlayerController : MonoBehaviour
 		if(other.tag != "Player")
 			isGrounded = false;
 	}
+
+    public void respawn()
+    {
+        transform.position = respawnPt.transform.position;
+        health = MaxHp;
+        foreach(GameObject resetable in resets)
+        {
+            resetable.GetComponent<Resetable>().Reset();
+        }
+    }
+
+    public void setDamage(float damage)
+    {
+        health -= damage;
+        timestamp = Time.time;
+    }
+
+    private IEnumerator RegainHp()
+    {
+        isRegenHealth = true;
+        while (health < MaxHp)
+        {
+            heal();
+            yield return new WaitForSeconds(1);
+        }
+        isRegenHealth = false;
+    }
+
+    public void heal()
+    {
+        health += healthReg;
+    }
 
 }
