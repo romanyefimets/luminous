@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - BlockTeleport
+  - reset
   layers:
   - Default
   - TransparentFX

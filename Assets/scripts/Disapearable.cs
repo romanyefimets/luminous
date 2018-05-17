@@ -16,6 +16,6 @@ public class Disapearable : MonoBehaviour, triggerListener {
 
     public void triggerAction()
     {
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
     }
 }

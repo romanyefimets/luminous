@@ -13,7 +13,8 @@ public class armFollow : MonoBehaviour {
     [SerializeField]
     GameObject arm;
 
-    [SerializeField] Transform armPositionLeft, armPositionRight;
+    [SerializeField] Transform armPositionLeft, armPositionRight, 
+        armPositionLeftCrouch, armPositionRightCrouch;
     // Use this for initialization
     void Start () {
 
@@ -26,8 +27,16 @@ public class armFollow : MonoBehaviour {
 
         if (player.GetComponent<SpriteRenderer>().flipX)
         {
-            armPivot.transform.localPosition = armPositionRight.localPosition;
-            arm.GetComponent<SpriteRenderer>().flipX = true;
+            if (!player.GetComponent<PlayerController>().isCrouching())
+            {
+                armPivot.transform.localPosition = armPositionRight.localPosition;
+            }
+            else
+            {
+                armPivot.transform.localPosition = armPositionRightCrouch.localPosition;
+            }
+
+                arm.GetComponent<SpriteRenderer>().flipX = true;
             if (armPivot.transform.eulerAngles.z > 0 && armPivot.transform.eulerAngles.z <= 180)
             {
                 arm.GetComponent<SpriteRenderer>().flipX = false;
@@ -36,7 +45,14 @@ public class armFollow : MonoBehaviour {
         }
         else
         {
-            armPivot.transform.localPosition = armPositionLeft.localPosition;
+            if (!player.GetComponent<PlayerController>().isCrouching())
+            {
+                armPivot.transform.localPosition = armPositionLeft.localPosition;
+            }
+            else
+            {
+                armPivot.transform.localPosition = armPositionLeftCrouch.localPosition;
+            }
             arm.GetComponent<SpriteRenderer>().flipX = false;
             if (armPivot.transform.eulerAngles.z > 0 && armPivot.transform.eulerAngles.z <= 180)
             {
