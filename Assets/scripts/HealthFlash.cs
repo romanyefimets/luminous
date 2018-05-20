@@ -29,7 +29,6 @@ public class HealthFlash : MonoBehaviour {
 
     public IEnumerator flashInput(Image input)
     {
-        print("test");
         Color imageColor = image.color;
         imageColor.a = .3f;
         image.color = imageColor;
