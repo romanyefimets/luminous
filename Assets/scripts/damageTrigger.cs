@@ -7,8 +7,11 @@ public class damageTrigger : MonoBehaviour {
     // Use this for initialization
     [SerializeField]
     float damageAmount = 10;
-	void Start () {
-		
+
+    private PlayerController playerController;
+	void Start ()
+    {
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 	}
 	
 	// Update is called once per frame
@@ -16,12 +19,12 @@ public class damageTrigger : MonoBehaviour {
 		
 	}
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "PlayerDamage")
         {
-            collision.gameObject.GetComponent<PlayerController>().setDamage(damageAmount);
+            print(gameObject.name);
+            playerController.setDamage(damageAmount);
         }
     }
 }

@@ -6,13 +6,15 @@ public class Damaging : MonoBehaviour {
 
     [SerializeField]
     float damageAmount;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    private PlayerController playerController;
+    void Start()
+    {
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 
@@ -20,7 +22,8 @@ public class Damaging : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerController>().setDamage(damageAmount);
+            print(collision.gameObject.name);
+            playerController.setDamage(damageAmount);
         }
     }
 
