@@ -6,6 +6,7 @@ public class Resetable : MonoBehaviour {
 
     private Vector3 location;
 	void Start () {
+        gameObject.tag = "reset";
         location = gameObject.transform.localPosition;
 	}
 	

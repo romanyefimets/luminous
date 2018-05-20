@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BlockTeleport
   - reset
+  - PlayerDamage
   layers:
   - Default
   - TransparentFX
