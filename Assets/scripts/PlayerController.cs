@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    HealthFlash healthFlash;
 
     private GameObject[] resets;
     public float MaxHp = 10;
@@ -192,6 +194,8 @@ public class PlayerController : MonoBehaviour
 
     public void setDamage(float damage)
     {
+        if (healthFlash != null) healthFlash.flash();
+
         health -= damage;
         timestamp = Time.time;
     }
@@ -211,5 +215,6 @@ public class PlayerController : MonoBehaviour
     {
         health += healthReg;
     }
+
 
 }
