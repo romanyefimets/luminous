@@ -11,6 +11,7 @@ public class FlashLightControl : MonoBehaviour {
     public const float MAX_BATTERY = 5 * 60;
     public float startingBattery = 2 * 60;
     private float battery;
+    private GameObject flashLight;
 
     [SerializeField]
     Light light;
@@ -20,6 +21,7 @@ public class FlashLightControl : MonoBehaviour {
         light.enabled = false;
         battery = startingBattery;
         timeDisplay.text = string.Format("Flashlight time remaining: {0:0.00}", battery);
+        flashLight = transform.Find("flashLight").gameObject;
     }
 
     // Update is called once per frame
@@ -32,7 +34,8 @@ public class FlashLightControl : MonoBehaviour {
 
         if (Input.GetButtonDown("Light") && battery > 0)
         {
-            light.enabled = !light.enabled;
+            Debug.Log(!light.enabled);
+            EnableLight(!light.enabled);
         }
 
         // If light is enabled, subtract from battery
@@ -42,18 +45,37 @@ public class FlashLightControl : MonoBehaviour {
 
             // If battery runs out, disable light
             if (battery <= 0)
-                light.enabled = false;
+                EnableLight(false);
         }
 
         timeDisplay.text = string.Format("Flashlight time remaining: {0:0.00}", battery);
     }
 
-    /// <summary>
-    /// Used to increase battery by given amount
-    /// </summary>
-    /// <param name="increase"></param>
     public void SetBattery(float increase)
     {
         battery = Mathf.Clamp(battery + increase, 0, MAX_BATTERY);
+    }
+
+    public float GetBattery()
+    {
+        return battery;
+    }
+
+    private void EnableLight(bool enable)
+    {
+        if (enable == true)
+        {
+            Debug.Log("Enabled");
+            light.enabled = true;
+            flashLight.tag = "Light";
+        }
+        else
+        {
+            Debug.Log("Not enabled");
+            light.enabled = false;
+            flashLight.tag = "Untagged";
+        }
+
+        Debug.Log(flashLight.tag);
     }
 }
