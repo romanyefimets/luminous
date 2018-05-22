@@ -10,7 +10,7 @@ public class GamePause : MonoBehaviour {
     Canvas pauseMenu;
 	// Use this for initialization
 	void Start () {
-        isPaused = false;
+        start();
         pauseMenu.enabled = false;
 	}
 	
