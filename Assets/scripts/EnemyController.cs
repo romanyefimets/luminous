@@ -9,16 +9,28 @@ public class EnemyController : MonoBehaviour {
 
     private Rigidbody2D body;
     private int direction;
+    private FlashLightControl flashLight;
+    private bool inBeam;
 
 	// Use this for initialization
 	void Start () {
+        inBeam = false;
         body = GetComponent<Rigidbody2D>();
         direction = -1;
+        flashLight = GameObject.FindWithTag("Light").transform.parent.GetComponent<FlashLightControl>();
+
+        if (target == null)
+            target = GameObject.FindWithTag("Player").transform;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
         Vector3 difference = transform.position - target.position;
+
+        if (inBeam == true && flashLight.GetOnStatus() == true)
+            direction = 1;
+        else
+            direction = -1;
 
         if (difference.magnitude <= 20)
             transform.position += direction * difference.normalized * Time.deltaTime * velocity;
@@ -27,12 +39,12 @@ public class EnemyController : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Light")
-            direction = 1;
+            inBeam = true;
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Light")
-            direction = -1;
+            inBeam = false;
     }
 }

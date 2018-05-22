@@ -12,6 +12,7 @@ public class FlashLightControl : MonoBehaviour {
     public float startingBattery = 2 * 60;
     private float battery;
     private GameObject flashLight;
+    private bool powerOn;
 
     [SerializeField]
     Light light;
@@ -22,6 +23,8 @@ public class FlashLightControl : MonoBehaviour {
         battery = startingBattery;
         timeDisplay.text = string.Format("Flashlight time remaining: {0:0.00}", battery);
         flashLight = transform.Find("flashLight").gameObject;
+        flashLight.tag = "Light";
+        powerOn = false;
     }
 
     // Update is called once per frame
@@ -33,10 +36,7 @@ public class FlashLightControl : MonoBehaviour {
         transform.parent.rotation = Quaternion.Euler(0f, 0f, rotZ);
 
         if (Input.GetButtonDown("Light") && battery > 0)
-        {
-            Debug.Log(!light.enabled);
             EnableLight(!light.enabled);
-        }
 
         // If light is enabled, subtract from battery
         if (light.enabled)
@@ -61,21 +61,25 @@ public class FlashLightControl : MonoBehaviour {
         return battery;
     }
 
+    public bool GetOnStatus()
+    {
+        return powerOn;
+    }
+
     private void EnableLight(bool enable)
     {
         if (enable == true)
         {
-            Debug.Log("Enabled");
             light.enabled = true;
-            flashLight.tag = "Light";
+            //flashLight.tag = "Light";
+            powerOn = true;
+            
         }
         else
         {
-            Debug.Log("Not enabled");
             light.enabled = false;
-            flashLight.tag = "Untagged";
+            //flashLight.tag = "Untagged";
+            powerOn = false;
         }
-
-        Debug.Log(flashLight.tag);
     }
 }

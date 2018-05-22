@@ -162,6 +162,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114274542753981006, guid: aa483022023ac884da3cb9ba29b0b3f5,
+        type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 918268029}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa483022023ac884da3cb9ba29b0b3f5, type: 2}
   m_IsPrefabParent: 0
@@ -7201,6 +7206,11 @@ Prefab:
       propertyPath: m_Name
       value: EnemyTest (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114274542753981006, guid: aa483022023ac884da3cb9ba29b0b3f5,
+        type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 918268029}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa483022023ac884da3cb9ba29b0b3f5, type: 2}
   m_IsPrefabParent: 0

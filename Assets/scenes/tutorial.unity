@@ -285,7 +285,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Watch out for traps '
+  m_Text: 'Watch out for traps and red square enemies (hint: you flashlight has real
+    power)'
 --- !u!222 &115779047
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4269,6 +4270,10 @@ Prefab:
         type: 2}
       propertyPath: coolDownStart
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614816568024642, guid: d7c65380f34218a4794df312e5d51e73, type: 2}
+      propertyPath: m_TagString
+      value: Light
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114432281239047142, guid: d7c65380f34218a4794df312e5d51e73, type: 2}
