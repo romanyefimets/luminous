@@ -8,6 +8,7 @@ TagManager:
   - reset
   - PlayerDamage
   - Light
+  - checkpoint
   layers:
   - Default
   - TransparentFX
