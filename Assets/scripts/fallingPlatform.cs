@@ -10,6 +10,8 @@ public class fallingPlatform : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		GetComponent<BoxCollider2D> ().enabled = true;
+		GetComponent<SpriteRenderer> ().enabled = true;
 		rb2d = GetComponent<Rigidbody2D> ();
 	}
 

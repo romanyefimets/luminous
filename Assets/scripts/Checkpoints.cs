@@ -10,7 +10,9 @@ public class Checkpoints : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        beacon.transform.position = this.transform.position;
-        Destroy(gameObject);
+		if (other.tag == "Player") {
+			beacon.transform.position = this.transform.position;
+			Destroy (gameObject);
+		}
     }
 }

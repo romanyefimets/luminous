@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isGrounded)
         {
-            myBody.velocity += jumpVelocity * Vector2.up;
+            myBody.velocity = jumpVelocity * Vector2.up;
 
         }
     }

@@ -22,7 +22,8 @@ public class timer : MonoBehaviour {
 
 		if (moving == true) {
 			if (Time.time - start > time)
-				Destroy (gameObject);
+				GetComponent<CircleCollider2D> ().enabled = false;
+				GetComponent<SpriteRenderer> ().enabled = false;
 		}
 		
 	}
