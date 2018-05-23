@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    bool canJump = true;
     [SerializeField]
     HealthFlash healthFlash;
 
@@ -176,17 +175,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-	private void OnTriggerStay2D(Collider2D other){
-		if(other.tag != "Player")
-			isGrounded = true;
-        canJump = false;
-	}
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        isGrounded = true;
+    }
 
-	private void OnTriggerExit2D(Collider2D other){
-		if(other.tag != "Player")
-			isGrounded = false;
-        canJump = true;
-	}
+    private void OnCollisionExit2D(Collision2D other)
+    {
+            isGrounded = false;
+    }
 
     public void respawn()
     {
