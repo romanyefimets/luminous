@@ -109,10 +109,13 @@ public class PlayerController : MonoBehaviour
             GetComponent<BoxCollider2D>().size = new Vector2(colliderW, colliderH / 2);
             GetComponent<BoxCollider2D>().offset = new Vector2(colliderOffX,  - colliderH / 4);
             speed = crouchSpeed;
-            if (myBody.velocity.magnitude > 0)
+            
+            if (myBody.velocity.magnitude > 1)
                 isCrouch = false;
             else
                 isCrouch = true;
+
+            print(isCrouch);
 
         }
 
@@ -189,15 +192,17 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = respawnPt.transform.position;
         health = MaxHp;
-        foreach(GameObject resetable in resets)
+
+        foreach (GameObject resetable in resets)
         {
             resetable.GetComponent<Resetable>().Reset();
         }
+        
     }
 
     public void setDamage(float damage)
     {
-        if (healthFlash != null) healthFlash.flash();
+        if (healthFlash != null && damage > 0) healthFlash.flash();
 
         health -= damage;
         timestamp = Time.time;

@@ -18,6 +18,7 @@ public class SceneMusic : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+
         songTime = source.time;
 	}
 

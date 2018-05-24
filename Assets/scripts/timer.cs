@@ -21,9 +21,8 @@ public class timer : MonoBehaviour {
 		}
 
 		if (moving == true) {
-			if (Time.time - start > time)
-				GetComponent<CircleCollider2D> ().enabled = false;
-				GetComponent<SpriteRenderer> ().enabled = false;
+            if (Time.time - start > time)
+                gameObject.SetActive(false);
 		}
 		
 	}

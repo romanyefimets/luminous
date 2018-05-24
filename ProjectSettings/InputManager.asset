@@ -362,9 +362,9 @@ InputManager:
     descriptiveName: Pause
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: escape
+    positiveButton: p
     altNegativeButton: 
-    altPositiveButton: p
+    altPositiveButton: 
     gravity: 3
     dead: 0.001
     sensitivity: 3

@@ -7,7 +7,7 @@ public class Resetable : MonoBehaviour {
     private Vector3 location;
 	void Start () {
         gameObject.tag = "reset";
-        location = gameObject.transform.localPosition;
+        location = gameObject.transform.position;
 	}
 	
 	// Update is called once per frame
@@ -18,6 +18,6 @@ public class Resetable : MonoBehaviour {
     public void Reset()
     {
         gameObject.SetActive(true);
-        gameObject.transform.localPosition = location;
+        gameObject.transform.position = location;
     }
 }
