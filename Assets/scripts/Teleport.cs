@@ -9,6 +9,7 @@ public class Teleport : MonoBehaviour {
     Camera mainCamera;
     public GameObject teleportUI;
     public float coolDownStart = 3;
+    public float range = 20;
 
     float coolDown;
     private bool canTeleport;
@@ -46,7 +47,7 @@ public class Teleport : MonoBehaviour {
             float newCameraSize = (mainCamera.ScreenToWorldPoint(Input.mousePosition) - lastCameraPos).magnitude * .02f;
 
             // Update camera view if view is within range
-            if (mainCamera.orthographicSize < 20)
+            if (mainCamera.orthographicSize < range)
             {
                 mainCamera.orthographicSize += newCameraSize;
                 lastCameraPos = mainCamera.transform.position;
