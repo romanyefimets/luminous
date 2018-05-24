@@ -8,9 +8,18 @@ public class damageTrigger : MonoBehaviour {
     [SerializeField]
     float damageAmount = 10;
 
+
+    [SerializeField]
+    bool damageByForce;
+
+    Rigidbody2D rb;
+
+
     private PlayerController playerController;
 	void Start ()
     {
+        if (damageByForce) rb = gameObject.GetComponent<Rigidbody2D>();
+
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 	}
 	
@@ -23,8 +32,16 @@ public class damageTrigger : MonoBehaviour {
     {
         if (collision.gameObject.tag == "PlayerDamage")
         {
-            print(gameObject.name);
-            playerController.setDamage(damageAmount);
+            print(collision.gameObject.name);
+
+            playerController.setDamage(getDamage());
         }
+    }
+
+    private float getDamage()
+    {
+        if (!damageByForce) return damageAmount;
+        float velocity = rb.velocity.magnitude;
+        return velocity;
     }
 }

@@ -18,8 +18,13 @@ public class CameraController : MonoBehaviour {
     {
         if (Input.GetKey(KeyCode.Escape))
         {
-            Application.Quit();
+            exit();
         }
+    }
+
+    public void exit()
+    {
+        Application.Quit();
     }
 
     // LateUpdate is called after Update each frame
