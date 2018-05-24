@@ -32,7 +32,7 @@ public class EnemyController : MonoBehaviour {
         else
             direction = -1;
 
-        if (difference.magnitude <= 20)
+        if (difference.magnitude <= 15)
             transform.position += direction * difference.normalized * Time.deltaTime * velocity;
 	}
 
