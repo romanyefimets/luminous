@@ -8,8 +8,7 @@ public class InverseChar : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
-		GetComponent<CircleCollider2D> ().enabled = true;
-		GetComponent<SpriteRenderer> ().enabled = true;
+		gameObject.SetActive(true);
 	}
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -20,8 +19,7 @@ public class InverseChar : MonoBehaviour {
         {
             player.invControl = true;
             player.startTime = Time.time;
-			GetComponent<CircleCollider2D> ().enabled = false;
-			GetComponent<SpriteRenderer> ().enabled = false;
+			gameObject.SetActive(false);
         }
     }
 }

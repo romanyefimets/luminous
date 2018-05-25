@@ -8,8 +8,7 @@ public class BatteryTrigger : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GetComponent<BoxCollider2D> ().enabled = true;
-		GetComponent<SpriteRenderer> ().enabled = true;
+		gameObject.SetActive(true);
 	}
 
 	// Update is called once per frame
@@ -23,8 +22,7 @@ public class BatteryTrigger : MonoBehaviour {
         if (other.tag == "Player")
         {
             other.transform.Find("armPivot").Find("arm").GetComponent<FlashLightControl>().SetBattery(increaseAmount);
-			GetComponent<BoxCollider2D> ().enabled = false;
-			GetComponent<SpriteRenderer> ().enabled = false;
+			gameObject.SetActive(false);
         }
     }
 }

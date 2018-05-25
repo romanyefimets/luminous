@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ladder : MonoBehaviour, triggerListener {
 
 	void Start(){
-		GetComponent<BoxCollider2D>().enabled = false;
+		setAllCollidersStatus (false);
 		GetComponent<SpriteRenderer> ().enabled = false;
 	}
 
@@ -32,7 +32,12 @@ public class Ladder : MonoBehaviour, triggerListener {
 	public void triggerAction()
 	{
 		GetComponent<SpriteRenderer> ().enabled = true;
-		GetComponent<BoxCollider2D>().enabled = true;
+		setAllCollidersStatus (true);
 	}
 
+	public void setAllCollidersStatus(bool status){
+		foreach(Collider2D c in GetComponents<Collider2D>()){
+			c.enabled = status;
+		}	
+	}
 }

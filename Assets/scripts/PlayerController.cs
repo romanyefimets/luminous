@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     Animator animator;
 
-    [SerializeField] private float health;
+    [SerializeField] private float health = 10;
     [SerializeField] Transform respawnPt;
 
 
@@ -64,14 +64,17 @@ public class PlayerController : MonoBehaviour
 
         colliderOffX =  GetComponent<BoxCollider2D>().offset.x;
         colliderOffY = GetComponent<BoxCollider2D>().offset.y;
-
-
-
-
     }
 
     void Update()
     {
+		//Attempt to solve the sliding down the hill problem
+		/*if (!Input.anyKeyDown) {
+			myBody.isKinematic = true;
+		} else {
+			myBody.isKinematic = false;
+		}*/
+
         if (health != MaxHp && !isRegenHealth)
         {
             if (Time.time > (timestamp + 10.0f)) //change the float to control hp regen delay timer after taking damage
@@ -118,15 +121,8 @@ public class PlayerController : MonoBehaviour
             print(isCrouch);
 
         }
-
-
-
-
-
         animator.SetFloat("speed", myBody.velocity.magnitude);
         animator.SetBool("crouchIdle", isCrouch);
-
-
 
         flipCharacter();
 
@@ -139,8 +135,34 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
             Jump();
 
-
     }
+
+
+	void FixedUpdate(){
+		NormalizeSlope();
+	}
+	// @NOTE Must be called from FixedUpdate() to work properly
+	void NormalizeSlope () {
+		// Attempt vertical normalization
+		if (isGrounded) {
+			RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 1f, playerMask);
+			
+			if (hit.collider != null && Mathf.Abs(hit.normal.x) > 0.1f) {
+				Rigidbody2D body = GetComponent<Rigidbody2D>();
+				// Apply the opposite force against the slope force 
+				// You will need to provide your own slopeFriction to stabalize movement
+				body.velocity = new Vector2(body.velocity.x - (hit.normal.x * 9999999999999999999), body.velocity.y);
+
+				//Move Player up or down to compensate for the slope below them
+				Vector3 pos = transform.position;
+				pos.y += -hit.normal.x * Mathf.Abs(body.velocity.x) * Time.deltaTime * (body.velocity.x - hit.normal.x > 0 ? 1 : -1);
+				transform.position = pos;
+			}
+		}
+	}
+
+
+
 
     public void flipCharacter()
     {

@@ -26,7 +26,12 @@ public class fallingPlatform : MonoBehaviour {
 		rb2d.isKinematic = false;
 		rb2d.gravityScale = 3;
 		GetComponent<Collider2D> ().isTrigger = true;
-		yield return 0;
+		yield return new WaitForSeconds(2);
+		gameObject.SetActive(false);
+		rb2d.isKinematic = true;
+		GetComponent<Collider2D> ().isTrigger = false;
+		StopCoroutine (fall());
+
 	}
 
 }

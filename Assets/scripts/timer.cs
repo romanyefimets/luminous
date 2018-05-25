@@ -23,7 +23,6 @@ public class timer : MonoBehaviour {
 		if (moving == true) {
             if (Time.time - start > time)
                 gameObject.SetActive(false);
-		}
-		
+		}	
 	}
 }

@@ -6,8 +6,7 @@ public class DropFloor : MonoBehaviour{
 
 	// Use this for initialization
 	void Start () {
-		GetComponent<BoxCollider2D>().enabled = true;
-		GetComponent<SpriteRenderer>().enabled = true;
+		gameObject.SetActive(true);
 	}
 
 	// Update is called once per frame
@@ -18,8 +17,7 @@ public class DropFloor : MonoBehaviour{
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.tag == "Player") {
-			GetComponent<BoxCollider2D> ().enabled = false;
-			GetComponent<SpriteRenderer> ().enabled = false;
+			gameObject.SetActive(false);
 		}
 	}
 }
