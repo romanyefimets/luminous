@@ -8679,7 +8679,7 @@ Prefab:
     - target: {fileID: 50524076426623498, guid: fd6ba640ebb2ab64da7bc331bef5ae60,
         type: 2}
       propertyPath: m_Mass
-      value: 1000000
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 61215957268473014, guid: fd6ba640ebb2ab64da7bc331bef5ae60, type: 2}
