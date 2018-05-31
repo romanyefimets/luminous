@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/scenes/tutorial.unity
     guid: 66e69ea175d76d8499eb65aab6ad61f5
-  - enabled: 1
+  - enabled: 0
     path: Assets/scenes/forest.unity
     guid: e7bf54bea4874eb4a8442bde9d46b6a2
   - enabled: 0
@@ -26,6 +26,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/scenes/videoBall.unity
     guid: 4d2117d9fbcdb0d47967b1b993bfd22d
-  - enabled: 0
+  - enabled: 1
     path: Assets/scenes/main.unity
     guid: 3f4ea37c3b056414fa9537f9c85aea03
