@@ -619,6 +619,7 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   teleportUI: {fileID: 0}
   coolDownStart: 3
+  range: 20
 --- !u!114 &114421858212701612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -645,7 +646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthFlash: {fileID: 0}
   MaxHp: 10
-  healthReg: 0
+  healthReg: 1
   timestamp: 0
   walkSpeed: 2
   runSpeed: 10
@@ -656,7 +657,7 @@ MonoBehaviour:
     m_Bits: 4294967039
   myBody: {fileID: 50524076426623498}
   animator: {fileID: 95843557301969556}
-  health: 1
+  health: 10
   respawnPt: {fileID: 0}
   invControl: 0
   startTime: 0
